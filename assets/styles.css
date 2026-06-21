@@ -1,0 +1,316 @@
+/* =========================================================================
+   Hamish Patten — personal site
+   Palette 1: Hunter green & antique gold · Style A: gallery catalogue
+   To change fonts site-wide, edit --font-display / --font-body below.
+   ========================================================================= */
+
+:root {
+  /* ---- Colour tokens (Palette 1) ---- */
+  --green:        #1B3A2B;  /* header / footer / dark green       */
+  --green-deep:   #14342B;  /* hover / active                     */
+  --gold:         #C9A24B;  /* accents: dividers, active underline */
+  --gold-soft:    #d8b76a;  /* gold hover                         */
+  --header-text:  #F2ECDD;  /* ivory: header brand + nav links    */
+  --aubergine:    #4B2E4A;  /* rare accent: pull-quotes, hovers   */
+  --bg:           #FAF8F4;  /* warm off-white page background     */
+  --bg-art:       #FFFFFF;  /* TRUE white behind paintings        */
+  --ink:          #1E1E1E;  /* body text                          */
+  --ink-soft:     #4f4a44;  /* secondary text                     */
+  --line:         #e3ddd2;  /* hairline dividers on light bg      */
+
+  /* ---- Type tokens (swap these two lines to change the site font) ---- */
+  --font-display: "Playfair Display", Georgia, serif;  /* headings / wordmark */
+  --font-body:    "EB Garamond", Georgia, serif;        /* body text          */
+
+  /* ---- Layout tokens ---- */
+  --maxw: 1180px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --header-h: 64px;
+}
+
+/* ---------------------------------------------------------------- reset */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--green); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+a:hover { color: var(--aubergine); }
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; color: var(--green); }
+h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 .4em; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.25rem); margin: 0 0 .5em; }
+h3 { font-size: 1.4rem; margin: 0 0 .3em; }
+
+.container { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.page { padding-block: clamp(2rem, 6vw, 4.5rem); }
+.lede { font-size: 1.2rem; color: var(--ink-soft); max-width: 60ch; }
+
+/* gold hairline divider */
+.rule { border: 0; height: 1px; background: var(--gold); opacity: .55; margin: clamp(2rem,5vw,3.5rem) 0; }
+.section-title { display: flex; align-items: center; gap: 1rem; }
+.section-title::after { content: ""; flex: 1; height: 1px; background: var(--gold); opacity: .5; }
+
+/* ----------------------------------------------------------- HEADER/NAV */
+/* The wrapper is a direct child of <body>, so make IT sticky — that lets the
+   header pin to the top of the viewport for the whole page. */
+#site-header { position: sticky; top: 0; z-index: 100; }
+.site-header {
+  background: var(--green);
+  border-bottom: 4px solid var(--gold);
+}
+.nav-wrap {
+  max-width: var(--maxw); margin-inline: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--gutter); min-height: var(--header-h);
+}
+.brand {
+  font-family: var(--font-display);
+  color: var(--header-text); font-size: 1.4rem; font-weight: 600;
+  letter-spacing: .03em; text-decoration: none; white-space: nowrap;
+}
+.brand:hover { color: var(--gold); }
+
+.nav-toggle {
+  display: none; background: none; border: 1px solid var(--gold);
+  color: var(--gold); border-radius: 4px; padding: .35rem .55rem;
+  font-size: 1.1rem; cursor: pointer;
+}
+
+.nav { display: flex; align-items: center; gap: .25rem; }
+.nav a, .nav .dropbtn {
+  display: block; color: var(--header-text); text-decoration: none;
+  font-family: var(--font-body); font-size: 1.02rem; letter-spacing: .02em;
+  padding: .55rem .8rem; border-radius: 4px; background: none; border: 0; cursor: pointer;
+}
+.nav a:hover, .nav .dropbtn:hover { color: var(--gold); background: var(--green-deep); }
+.nav a.active { color: var(--gold); }
+.nav a.active::after { content: ""; display: block; height: 2px; background: var(--gold); margin-top: 2px; }
+
+/* dropdown */
+.dropdown { position: relative; }
+.dropdown > .dropbtn::after { content: " ▾"; color: var(--gold); }
+.dropdown-menu {
+  position: absolute; left: 0; top: 100%; min-width: 190px;
+  background: var(--green); border: 1px solid var(--gold);
+  border-radius: 0 0 6px 6px; padding: .3rem; display: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+.dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { display: block; }
+.dropdown-menu a { white-space: nowrap; }
+
+/* --------------------------------------------------------------- FOOTER */
+.site-footer {
+  background: var(--green); color: #d9d2c2; margin-top: 4rem;
+  border-top: 2px solid var(--gold);
+}
+.footer-wrap {
+  max-width: var(--maxw); margin-inline: auto; padding: 2.2rem var(--gutter);
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between;
+}
+.footer-wrap a { color: var(--gold); }
+.social-row { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.footer-note { font-size: .92rem; opacity: .8; }
+
+/* ----------------------------------------------------------------- HERO */
+.hero { padding-top: clamp(2.5rem, 7vw, 5rem); padding-bottom: clamp(1rem, 2.5vw, 1.75rem); }
+.teasers { padding-bottom: clamp(2rem, 6vw, 4rem); }
+.hero h1 { color: var(--green); }
+.hero .intro { font-size: 1.25rem; max-width: 64ch; }
+.hero .intro p { margin: 0 0 1rem; }
+
+/* --------------------------------------------------- TEASER CARDS (home) */
+.teaser-grid {
+  display: grid; gap: clamp(1.5rem, 4vw, 2.5rem);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 760px) { .teaser-grid { grid-template-columns: repeat(2, 1fr); } }
+.teaser {
+  display: flex; flex-direction: column; background: #fff;
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+  text-decoration: none; color: var(--ink);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.teaser:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(27,58,43,.14); border-color: var(--gold); }
+.teaser:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.teaser-img { display: block; aspect-ratio: 16/10; overflow: hidden; background: var(--bg-art); }
+.teaser-img img { width: 100%; height: 100%; object-fit: cover; }
+/* Per-teaser framing tweaks (crop position only — files untouched) */
+.teaser[href="claywork.html"] .teaser-img img { object-position: center 62%; }   /* crop a little off the top — centre the teapot */
+.teaser[href="short-stories.html"] .teaser-img img { object-position: center 30%; } /* crop a little off the bottom — centre the pier */
+.teaser[href="visual-art.html"] .teaser-img img { object-fit: contain; }            /* show the whole painting, uncropped */
+.teaser-img.placeholder { display: grid; place-items: center; color: var(--ink-soft);
+  background: repeating-linear-gradient(45deg,#f1ece2,#f1ece2 12px,#ece5d8 12px,#ece5d8 24px); }
+.teaser-body { padding: 1.2rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.teaser-h { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.4rem;
+  line-height: 1.2; color: var(--green); }
+.teaser-p { margin: 0; color: var(--ink-soft); flex: 1; }
+.teaser:hover .teaser-h { color: var(--aubergine); }
+.teaser .go { color: var(--green); font-style: italic; }
+.teaser:hover .go { color: var(--aubergine); }
+
+/* ----------------------------------------------- WORK CARDS (sci / art) */
+/* Masonry: cards distributed round-robin (by site.js) into independent-height
+   columns, so the newest articles sit at the top of BOTH columns and there is
+   no forced equal-height white space. */
+.work-grid { display: flex; gap: clamp(2rem, 4vw, 3rem); align-items: flex-start; }
+.work-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 1.4rem;
+  margin: 0;
+}
+.card-frame {
+  background: var(--bg-art); padding: 14px; border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 1px #fff, 0 1px 2px rgba(0,0,0,.04);
+  display: grid; place-items: center; margin-bottom: 1.1rem;
+}
+.card-frame img { max-height: 460px; width: auto; object-fit: contain; }
+.card-title { margin: 0 0 .2rem; font-size: 1.45rem; }
+.card-subtitle { margin: 0 0 .7rem; font-style: italic; font-size: 1.12rem; color: var(--ink-soft); }
+.card-subtitle a { font-style: normal; }
+.card-body p { margin: 0 0 .6rem; }
+.card-full[hidden] { display: none; }
+.expand-btn {
+  align-self: flex-start; margin-top: .2rem; cursor: pointer;
+  background: none; border: 1px solid var(--gold); color: var(--green);
+  font-family: var(--font-body); font-size: 1rem; padding: .35rem .9rem; border-radius: 4px;
+}
+.expand-btn:hover { background: var(--green); color: var(--gold); }
+
+/* ------------------------------------------------------------------- CV */
+.cv-head { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.cv-portrait { background: var(--bg-art); padding: 12px; border: 1px solid var(--line);
+  box-shadow: 0 6px 18px rgba(27,58,43,.15); max-width: 220px; }
+.cv-head h1 { margin-bottom: .2em; }
+.pdf-frame { width: 100%; height: 85vh; min-height: 500px; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.btn {
+  display: inline-block; background: var(--green); color: var(--gold);
+  text-decoration: none; padding: .7rem 1.4rem; border-radius: 5px; border: 1px solid var(--gold);
+  font-size: 1.05rem;
+}
+.btn:hover { background: var(--green-deep); color: var(--gold-soft); }
+
+/* -------------------------------------------------------------- CONTACT */
+.contact-grid { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .contact-grid { grid-template-columns: 1.3fr 1fr; } }
+.form-field { display: flex; flex-direction: column; gap: .3rem; margin-bottom: 1.1rem; }
+.form-field label { font-size: 1rem; color: var(--green); }
+.form-field input, .form-field textarea {
+  font-family: var(--font-body); font-size: 1.05rem; padding: .7rem .8rem;
+  border: 1px solid var(--line); border-radius: 5px; background: #fff; color: var(--ink);
+}
+.form-field input:focus, .form-field textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+.honeypot { position: absolute; left: -5000px; }
+.contact-links a { display: block; padding: .4rem 0; }
+
+/* ----------------------------------------------------------- LITERATURE */
+.lit-index { display: grid; gap: 1.2rem; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .lit-index { grid-template-columns: repeat(2,1fr); } }
+.lit-link {
+  display: block; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold);
+  border-radius: 5px; padding: 1.1rem 1.3rem; text-decoration: none; color: var(--ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.lit-link:hover { transform: translateX(3px); box-shadow: 0 8px 20px rgba(27,58,43,.12); color: var(--ink); }
+.lit-link .t { font-family: var(--font-display); font-size: 1.3rem; color: var(--green); display: block; }
+.lit-link .s { color: var(--ink-soft); font-style: italic; font-size: .98rem; }
+
+/* ------------------------------------------------------ CLAYWORK GALLERY */
+/* Framed masonry: natural aspect ratios preserved (no cropping), no gaps. */
+.gallery { column-gap: clamp(.8rem, 2vw, 1.4rem); column-count: 1; }
+@media (min-width: 640px)  { .gallery { column-count: 2; } }
+@media (min-width: 1000px) { .gallery { column-count: 3; } }
+.gallery figure {
+  margin: 0 0 clamp(.8rem, 2vw, 1.4rem);
+  break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid;
+  background: var(--bg-art); padding: 10px; border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.gallery img { width: 100%; height: auto; display: block; }
+/* JS row-major masonry: priority order runs left-to-right across rows
+   (1_, 2_, 3_ on the first row). Falls back to the CSS columns above without JS. */
+.gallery.masonry-js { display: flex; gap: clamp(.8rem, 2vw, 1.4rem); align-items: flex-start; column-count: initial; }
+.gallery.masonry-js figure { margin: 0; }
+.gallery-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: clamp(.8rem, 2vw, 1.4rem); }
+
+/* --------------------------------------------------------------- LIGHTBOX */
+.card, .gallery figure { cursor: pointer; }
+.card a, .card button { cursor: pointer; }   /* keep links/expand obviously clickable */
+
+.lightbox { position: fixed; inset: 0; z-index: 1000; display: flex;
+  align-items: center; justify-content: center; padding: clamp(1rem, 4vw, 3rem); }
+.lightbox[hidden] { display: none; }
+.lightbox-backdrop { position: absolute; inset: 0; background: rgba(18, 28, 22, .93); }
+.lightbox-close {
+  position: absolute; top: clamp(.6rem, 2vw, 1.3rem); right: clamp(.6rem, 2vw, 1.3rem); z-index: 2;
+  width: 46px; height: 46px; border-radius: 50%; cursor: pointer; line-height: 1;
+  background: var(--green); color: var(--header-text); border: 1px solid var(--gold); font-size: 1.6rem;
+}
+.lightbox-close:hover { color: var(--gold); }
+.lightbox-panel {
+  position: relative; background: #fff; border-radius: 6px;
+  max-width: min(1080px, 94vw); max-height: 92vh; overflow: auto;
+  padding: clamp(1.2rem, 3vw, 2.4rem); box-shadow: 0 24px 70px rgba(0,0,0,.45);
+}
+.lightbox-panel.image-only { background: transparent; box-shadow: none; padding: 0; }
+.lb-frame { background: var(--bg-art); display: grid; place-items: center; padding: 12px; border: 1px solid var(--line); }
+.lightbox-panel.image-only .lb-frame { border: 0; }
+.lb-frame img { max-width: 100%; max-height: 64vh; width: auto; height: auto; }
+.lightbox-panel.image-only .lb-frame img { max-height: 90vh; }
+.lb-title { margin: 1rem 0 .2rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+.lb-text { margin-top: .8rem; }
+.lb-text p { margin: 0; }
+
+.prose { max-width: 70ch; margin-inline: auto; }
+.prose .meta { color: var(--ink-soft); font-style: italic; margin-bottom: 2rem; }
+.prose p { margin: 0 0 1.3rem; }
+.prose.poem p { white-space: pre-line; margin-bottom: 1.6rem; }
+.prose p:first-of-type::first-letter {
+  font-family: var(--font-display); font-size: 3.4rem; line-height: .8;
+  float: left; padding: .1rem .5rem .1rem 0; color: var(--aubergine);
+}
+.prose.poem p:first-of-type::first-letter { font-size: inherit; float: none; padding: 0; color: inherit; }
+.back-link { display: inline-block; margin-bottom: 1.5rem; font-style: italic; }
+
+/* --------------------------------------------------------- FONT SAMPLER */
+.sampler { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: clamp(1.2rem,3vw,2rem); }
+.sampler-note { color: var(--ink-soft); margin-bottom: 1.5rem; }
+.sample { padding: 1.1rem 0; border-bottom: 1px dashed var(--line); }
+.sample:last-child { border-bottom: 0; }
+.sample .label { font-family: var(--font-body); font-size: .85rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .3rem; }
+.sample .h { font-size: 1.9rem; color: var(--green); margin: 0 0 .2rem; line-height: 1.15; }
+.sample .p { font-size: 1.05rem; color: var(--ink); margin: 0; }
+
+/* ------------------------------------------------------------- MOBILE NAV */
+@media (max-width: 880px) {
+  .nav-toggle { display: inline-block; }
+  .nav {
+    position: absolute; top: var(--header-h); left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--green); border-bottom: 2px solid var(--gold);
+    padding: .5rem var(--gutter) 1rem; display: none;
+  }
+  .nav.open { display: flex; }
+  .nav a, .nav .dropbtn { padding: .8rem .4rem; width: 100%; text-align: left; }
+  .nav a.active::after { display: none; }
+  .dropdown { position: static; }
+  .dropdown-menu { position: static; display: none; border: 0; box-shadow: none;
+    background: var(--green-deep); border-radius: 4px; margin: .2rem 0 .4rem; }
+  .dropdown.open .dropdown-menu { display: block; }
+  .dropdown:hover .dropdown-menu { display: none; }
+  .dropdown.open .dropdown-menu { display: block; }
+  .dropdown-menu a { padding-left: 1.4rem; }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}

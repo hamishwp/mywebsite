@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Hamish Patten</title>
+  <meta name="description" content="Get in touch with Hamish Patten — statistician, physicist and artist in Lausanne.">
+  <meta name="author" content="Hamish Patten">
+  <link rel="canonical" href="https://hamishwp.github.io/mywebsite/contact.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#1B3A2B">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hamish Patten">
+  <meta property="og:title" content="Contact — Hamish Patten">
+  <meta property="og:description" content="Get in touch with Hamish Patten — statistician, physicist and artist in Lausanne.">
+  <meta property="og:url" content="https://hamishwp.github.io/mywebsite/contact.html">
+  <meta property="og:image" content="https://hamishwp.github.io/mywebsite/Images/Visual_Art/self_portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Hamish Patten">
+  <meta name="twitter:description" content="Get in touch with Hamish Patten — statistician, physicist and artist in Lausanne.">
+  <meta name="twitter:image" content="https://hamishwp.github.io/mywebsite/Images/Visual_Art/self_portrait.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+
+  <main class="page container">
+    <h1>Contact</h1>
+    <p class="lede">Whether it's about research, a painting, a pot or a piece of writing,feel free to get in touch and I'll do my best to reply as soon as possible! Much love, Hamish.</p>
+
+    <hr class="rule">
+
+    <div class="contact-grid">
+      <!-- Contact form: posts to FormSubmit's masked Email Link (/el/) so the
+           recipient address never appears in the page source. Token generated at
+           formsubmit.co/email-link. To change recipient, regenerate the token. -->
+      <form action="https://formsubmit.co/el/katube" method="POST">
+        <!-- spam honeypot: bots fill this, humans don't see it -->
+        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_subject" value="New message from your website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Your email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send message</button>
+      </form>
+
+      <aside class="contact-links">
+        <h3>Elsewhere</h3>
+        <p>You can also find me here:</p>
+        <a href="https://linkedin.com/in/hamishpatten" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/hamishwp" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=mwVQuFIAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0001-5600-2097" target="_blank" rel="noopener">ORCID</a>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/site.js"></script>
+</body>
+</html>

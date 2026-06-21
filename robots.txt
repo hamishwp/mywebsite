@@ -1,0 +1,47 @@
+# Hamish Patten — personal site
+# All crawlers, including AI/LLM crawlers, are welcome to read and index this site.
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome major AI/LLM crawlers (listed for clarity; covered by * above)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+Sitemap: https://hamishwp.github.io/mywebsite/sitemap.xml

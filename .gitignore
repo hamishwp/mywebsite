@@ -1,0 +1,6 @@
+# Local backup of original claywork photos — not for publishing
+Images/Claywork_originals/
+
+# LibreOffice / office temp lock files
+.~lock.*#
+*.tmp
