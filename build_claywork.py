@@ -18,7 +18,7 @@ CLAYWORK = ROOT / "claywork.html"
 INDEX = ROOT / "index.html"
 EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
 ALT = "Wheel-thrown ceramic piece by Hamish Patten"
-BASE = "https://hamishwp.github.io/mywebsite/"
+BASE = "https://hamishpatten.com/"
 
 def images():
     files = [p for p in IMG_DIR.iterdir() if p.suffix.lower() in EXTS]

@@ -6,7 +6,7 @@ Run after adding/removing pages:  python3 build_sitemap.py
 import pathlib, datetime
 
 ROOT = pathlib.Path(__file__).parent
-BASE = "https://hamishwp.github.io/mywebsite/"
+BASE = "https://hamishpatten.com/"
 EXCLUDE = set()  # add filenames here to keep them out of the sitemap
 
 # Rough priority hints (default 0.6). Home highest.

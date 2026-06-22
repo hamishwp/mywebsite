@@ -7,7 +7,7 @@ import re, html, json, pathlib
 
 ROOT = pathlib.Path(__file__).parent
 SRC = ROOT / "site_structure_ideas" / "literature.md"
-BASE = "https://hamishwp.github.io/mywebsite/"
+BASE = "https://hamishpatten.com/"
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'

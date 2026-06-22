@@ -18,7 +18,7 @@ import json, re, sys, html, pathlib
 import openpyxl
 
 ROOT = pathlib.Path(__file__).parent
-BASE = "https://hamishwp.github.io/mywebsite/"
+BASE = "https://hamishpatten.com/"
 AUTHOR = {"@type": "Person", "name": "Hamish Patten"}
 
 PAGES = {

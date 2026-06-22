@@ -44,4 +44,4 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
-Sitemap: https://hamishwp.github.io/mywebsite/sitemap.xml
+Sitemap: https://hamishpatten.com/sitemap.xml
