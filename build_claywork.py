@@ -2,8 +2,7 @@
 """Generate the Claywork gallery from the images in Images/Claywork, and point
 the home-page Claywork teaser at the first (most important) image.
 
-Images are ordered by filename, so a numeric prefix sets priority:
-    1_xxx.jpeg, 2_xxx.jpeg, 3_xxx.jpeg, then the rest alphabetically.
+Images are ordered by filename, reverse alphabetically (Z→A).
 The first image is used top-left on the Claywork page AND as the home teaser.
 No captions are added.
 
@@ -22,7 +21,7 @@ BASE = "https://hamishpatten.com/"
 
 def images():
     files = [p for p in IMG_DIR.iterdir() if p.suffix.lower() in EXTS]
-    files.sort(key=lambda p: p.name)           # numeric prefixes (1_,2_,3_) come first
+    files.sort(key=lambda p: p.name, reverse=True)
     return [f"Images/Claywork/{p.name}" for p in files]
 
 def gallery_html(paths):
