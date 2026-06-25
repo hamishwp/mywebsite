@@ -19,6 +19,10 @@ EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
 ALT = "Wheel-thrown ceramic piece by Hamish Patten"
 BASE = "https://hamishpatten.com/"
 
+# Home-page Claywork teaser is PINNED to this specific piece (with a tuned CSS crop
+# in styles.css), independent of the gallery sort order. Change this to repoint it.
+TEASER_IMAGE = "Images/Claywork/IMG_3945.jpeg"
+
 def images():
     files = [p for p in IMG_DIR.iterdir() if p.suffix.lower() in EXTS]
     files.sort(key=lambda p: p.name, reverse=True)
@@ -74,7 +78,10 @@ def main():
     text = splice(text, "<!-- JSONLD:START -->", "<!-- JSONLD:END -->", jsonld_gallery(paths))
     CLAYWORK.write_text(text, encoding="utf-8")
     print(f"Claywork gallery: {len(paths)} images (first = {paths[0].split('/')[-1]})")
-    update_home_teaser(paths[0])
+    if (ROOT / TEASER_IMAGE).exists():
+        update_home_teaser(TEASER_IMAGE)
+    else:
+        print(f"  ! pinned TEASER_IMAGE '{TEASER_IMAGE}' not found — home teaser left unchanged.")
 
 if __name__ == "__main__":
     main()
